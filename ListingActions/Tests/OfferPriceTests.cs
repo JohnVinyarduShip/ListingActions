@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using ListingActions.Contexts;
 using ListingActions.Pipeline;
-using ListingActions.Services;
 using ListingActions.Specs;
-using ListingActions.Specs.Interfaces;
 using NUnit.Framework;
-using List = NHibernate.Mapping.List;
 
 namespace ListingActions.Tests
 {
@@ -15,17 +11,16 @@ namespace ListingActions.Tests
     {
         protected override IPipeline<BiddingContext> BuildPipeline()
         {
-            var pipelineService = Container.GetInstance<IPipelineService>();
-
             return new Pipeline<BiddingContext>(
 
-                new PlaceBid(Container, 
-                    new List<IPlaceBidSpec>{
-                        new BidderIsIdVerified(pipelineService),
-                        new BidAmountIsEqualTo(pipelineService)}),
+                new PlaceBid(
+                    new BidderIsIdVerified(),
+                    new BidAmountIsEqualTo(new Price(101m))),
 
-                new PutListingOnHold(Container, new List<IPutListingOnHoldSpec> { new All(pipelineService) }),
-                new AutoAcceptBid(Container, new List<IAutoAcceptBidSpec> { new None(pipelineService) })
+                new PutListingOnHold(
+                    new All()),
+                new AutoAcceptBid(
+                    new None())
             );
         }
 
@@ -34,7 +29,7 @@ namespace ListingActions.Tests
         {
             var req = _pipeline.SpecsAs<IPriceRestriction>().LastOrDefault();
             Assert.NotNull(req);
-            Assert.AreEqual(new Price(101m), req.Min);
+            Assert.AreEqual(new Price(101m),req.Min);
             Assert.AreEqual(new Price(101m), req.Max);
         }
 

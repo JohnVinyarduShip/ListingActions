@@ -21,13 +21,12 @@ namespace ListingActions.Tests
         protected static readonly Type PLACE_BID = typeof (PlaceBid);
         protected static readonly Type PUT_ON_HOLD = typeof (PutListingOnHold);
         protected static readonly Type AUTO_ACCEPT = typeof (AutoAcceptBid);
-        protected IContainer Container;
+
         [SetUp]
         public void SetUp()
         {
-            Container = Startup.Configure();
-
-            _database = Container.GetInstance<IDatabase>();
+            Startup.Configure();
+            _database = ObjectFactory.GetInstance<IDatabase>();
             _database.Clear();
 
             _pipeline = BuildPipeline();

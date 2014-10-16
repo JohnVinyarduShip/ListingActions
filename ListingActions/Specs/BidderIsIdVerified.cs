@@ -1,19 +1,10 @@
 ﻿using System;
 using ListingActions.Contexts;
-using ListingActions.Services;
-using ListingActions.Specs.Interfaces;
 
 namespace ListingActions.Specs
 {
-    public class BidderIsIdVerified : ISpecification<IBidderContext>, IPlaceBidSpec
+    public class BidderIsIdVerified : ISpecification<IBidderContext>
     {
-        private readonly IPipelineService _pipelineService;
-
-        public BidderIsIdVerified(IPipelineService pipelineService)
-        {
-            _pipelineService = pipelineService;
-        }
-
         public bool IsSatisfied(IBidderContext context)
         {
             return

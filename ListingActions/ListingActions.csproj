@@ -101,12 +101,8 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Pipeline\IPipeline.cs" />
     <Compile Include="Pipeline\IPipelineStep.cs" />
-    <Compile Include="Services\IPipelineService.cs" />
     <Compile Include="Specs\BidAmountIsLessThan.cs" />
     <Compile Include="Specs\BidderIsInShippersNetwork.cs" />
-    <Compile Include="Specs\Interfaces\IAutoAcceptBidSpec.cs" />
-    <Compile Include="Specs\Interfaces\IPlaceBidSpec.cs" />
-    <Compile Include="Specs\Interfaces\IPutListingOnHoldSpec.cs" />
     <Compile Include="Specs\ISpecification.cs" />
     <Compile Include="Specs\All.cs" />
     <Compile Include="Specs\BidAmountIsEqualTo.cs" />
@@ -121,7 +117,6 @@
     <Compile Include="Tests\BaseTests.cs" />
     <Compile Include="Tests\BookitNowAndAuctionTests.cs" />
     <Compile Include="Tests\BookItNowOnlyTests.cs" />
-    <Compile Include="Tests\DynamicSetupOfSpecTestFixture.cs" />
     <Compile Include="Tests\OfferPriceAndBookItNowTests.cs" />
     <Compile Include="Tests\OfferPriceTests.cs" />
     <Compile Include="Tests\PrivateNetworkTests.cs" />

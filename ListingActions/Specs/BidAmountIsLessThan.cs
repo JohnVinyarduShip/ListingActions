@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using ListingActions.Contexts;
-using ListingActions.Services;
+﻿using ListingActions.Contexts;
 
 namespace ListingActions.Specs
 {
@@ -8,10 +6,10 @@ namespace ListingActions.Specs
     {
         public Price MaxPrice { get; protected set; }
 
-        public BidAmountIsLessThan(IPipelineService pipelineService)
+        public BidAmountIsLessThan(Price maxPrice)
         {
             Min = new Price(0);
-            Max = pipelineService.GetSpecValues<BidAmountIsLessThan>().FirstOrDefault().Value;
+            Max = maxPrice;
         }
 
         public bool IsSatisfied(IPriceContext context)

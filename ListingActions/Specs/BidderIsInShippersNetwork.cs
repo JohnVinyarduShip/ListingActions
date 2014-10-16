@@ -1,19 +1,11 @@
 ﻿using ListingActions.Contexts;
 using ListingActions.Entities;
-using ListingActions.Services;
 using StructureMap;
 
 namespace ListingActions.Specs
 {
     public class BidderIsInShippersNetwork : ISpecification<IPreBidContext>
     {
-        private readonly IPipelineService _pipelineService;
-
-        public BidderIsInShippersNetwork(IPipelineService pipelineService)
-        {
-            _pipelineService = pipelineService;
-        }
-
         public bool IsSatisfied(IPreBidContext context)
         {
             var db = ObjectFactory.GetInstance<IDatabase>();

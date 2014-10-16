@@ -5,19 +5,16 @@ namespace ListingActions.Configuration
 {
     public static class Startup
     {
-        public static IContainer Configure()
+        public static void Configure()
         {
-            var container = new Container(x => 
+            ObjectFactory.Initialize(x => 
                 x.For<IDatabase>().Use<Database>().Singleton());
 
-            
             JsonConvert.DefaultSettings = () => 
                 new JsonSerializerSettings
                 {
                     TypeNameHandling = TypeNameHandling.All
                 };
-
-            return container;
         }
     }
 }

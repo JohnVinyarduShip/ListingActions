@@ -26,9 +26,10 @@ namespace ListingActions.Pipeline
     {
         private readonly IList<ISpecification<TContext>> _preconditions;
 
-        protected PipelineStepWithPreconditions(IEnumerable<ISpecification<TContext>> preconditions)
+        protected PipelineStepWithPreconditions(
+            params ISpecification<TContext>[] preconditions)
         {
-            _preconditions = preconditions.ToList();
+            _preconditions = preconditions;
         }
 
         public TContext Execute(TContext context)

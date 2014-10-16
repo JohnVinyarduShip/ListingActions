@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using ListingActions.Contexts;
-using ListingActions.Services;
-using ListingActions.Specs.Interfaces;
+﻿using ListingActions.Contexts;
 
 namespace ListingActions.Specs
 {
@@ -11,12 +8,12 @@ namespace ListingActions.Specs
         Price Max { get; }
     }
 
-    public class BidAmountIsEqualTo : ISpecification<IPriceContext>, IPriceRestriction, IPlaceBidSpec
+    public class BidAmountIsEqualTo : ISpecification<IPriceContext>, IPriceRestriction
     {
-        public BidAmountIsEqualTo(IPipelineService pipelineService)
+        public BidAmountIsEqualTo(Price amount)
         {
-            Min = pipelineService.GetSpecValues<BidAmountIsEqualTo>().FirstOrDefault().Value;
-            Max = pipelineService.GetSpecValues<BidAmountIsEqualTo>().FirstOrDefault().Value;
+            Min = amount;
+            Max = amount;
         }
 
         public bool IsSatisfied(IPriceContext context)

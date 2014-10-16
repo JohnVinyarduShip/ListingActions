@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using ListingActions.Contexts;
-using ListingActions.Services;
+﻿using ListingActions.Contexts;
 
 namespace ListingActions.Specs
 {
@@ -11,9 +9,9 @@ namespace ListingActions.Specs
     {
         public int MinimumStarRating { get; protected set; }
 
-        public UserHasStarRating(IPipelineService pipelineService)
+        public UserHasStarRating(int minimumStarRating)
         {
-            MinimumStarRating = pipelineService.GetSpecValues<UserHasStarRating>().FirstOrDefault().Value;
+            MinimumStarRating = minimumStarRating;
         }
 
         public bool IsSatisfied(IBidderContext context)
